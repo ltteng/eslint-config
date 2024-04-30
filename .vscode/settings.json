@@ -2,17 +2,19 @@
   "files.eol": "\n",
   "prettier.endOfLine": "lf",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
+  "eslint.experimental.useFlatConfig": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "html",
     "vue",
+    "html",
+    "markdown",
     "json",
-    "json5",
     "jsonc",
     "yaml"
   ]
