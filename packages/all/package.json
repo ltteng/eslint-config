@@ -1,0 +1,38 @@
+{
+  "name": "@ltteng/eslint-config",
+  "version": "0.0.1",
+  "description": "三咲智子's ESLint config",
+  "keywords": [
+    "eslint",
+    "config",
+    "preset",
+    "ltteng"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ltteng/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/ltteng/eslint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltteng/eslint-config.git"
+  },
+  "author": "LiTENGTENG",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "dependencies": {
+    "@ltteng/eslint-config-prettier": "workspace:*",
+    "@ltteng/eslint-config-vue": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}

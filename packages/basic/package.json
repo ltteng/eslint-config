@@ -1,0 +1,37 @@
+{
+  "name": "@ltteng/eslint-config-basic",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "homepage": "https://github.com/ltteng/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/ltteng/eslint-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltteng/eslint-config.git"
+  },
+  "author": "LiTENGTENG",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "dependencies": {
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsonc": "^2.15.1",
+    "eslint-plugin-markdown": "^3.0.1",
+    "eslint-plugin-yml": "^1.14.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  }
+}
