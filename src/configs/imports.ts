@@ -1,15 +1,13 @@
-import { pluginAntfu, pluginImport } from '../plugins'
+import { pluginImport } from '../plugins'
 import { GLOB_MARKDOWN, GLOB_SRC, GLOB_SRC_EXT } from '../globs'
 import type { FlatESLintConfig } from 'eslint-define-config'
 
 export const imports: FlatESLintConfig[] = [
   {
     plugins: {
-      antfu: pluginAntfu,
       import: pluginImport
     },
     rules: {
-      'antfu/import-dedupe': 'error',
       'import/first': 'error',
       'import/no-default-export': 'error',
       'import/no-duplicates': 'error',

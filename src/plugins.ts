@@ -8,10 +8,6 @@ function interopDefault<T>(m: T): InteropDefault<T> {
   return (m as any).default || m
 }
 
-import * as _pluginAntfu from 'eslint-plugin-antfu'
-export const pluginAntfu: typeof import('eslint-plugin-antfu').default =
-  interopDefault(_pluginAntfu)
-
 import * as _pluginComments from 'eslint-plugin-eslint-comments'
 export const pluginComments: any = interopDefault(_pluginComments)
 
