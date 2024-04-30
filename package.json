@@ -1,0 +1,16 @@
+{
+  "name": "@ltteng/eslint-config-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "LiTENGTENG's ESLint config preset",
+  "author": "LiTENGTENG",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --fix",
+    "release": "bumpp -r && pnpm publish -r"
+  },
+  "devDependencies": {
+    "bumpp": "^9.4.1",
+    "eslint": "^9.1.1"
+  }
+}
