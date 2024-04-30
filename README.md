@@ -58,18 +58,6 @@ pnpm i -D @ltteng/eslint-config
     "json5",
     "jsonc",
     "yaml"
-  ],
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "json",
-    "json5",
-    "jsonc",
-    "yaml"
   ]
 }
 ```

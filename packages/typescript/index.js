@@ -29,14 +29,14 @@ module.exports = defineConfig({
     }
   ],
   rules: {
-    '@typescript-eslint/naming-convention': [
-      'error',
-      { selector: 'interface', format: ['PascalCase'] },
-      { selector: 'typeAlias', format: ['PascalCase'] }
-    ],
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { prefer: 'type-imports' }
-    ]
+    // '@typescript-eslint/naming-convention': [
+    //   'error',
+    //   { selector: 'interface', format: ['PascalCase'] },
+    //   { selector: 'typeAlias', format: ['PascalCase'] }
+    // ],
+    // '@typescript-eslint/consistent-type-imports': [
+    //   'error',
+    //   { prefer: 'type-imports' }
+    // ]
   }
 })

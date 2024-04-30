@@ -8,6 +8,6 @@ module.exports = defineConfig({
   plugins: ['prettier'],
   rules: {
     ...prettierRules,
-    'prettier/prettier': 'warn',
-  },
+    'prettier/prettier': 'warn'
+  }
 })

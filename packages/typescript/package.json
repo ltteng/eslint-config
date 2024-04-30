@@ -1,6 +1,6 @@
 {
   "name": "@ltteng/eslint-config-ts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -21,17 +21,17 @@
     "access": "public"
   },
   "peerDependencies": {
-    "eslint": ">=7.4.0",
-    "typescript": ">=3.9"
+    "eslint": ">=8.0.0",
+    "typescript": ">=5.4.5"
   },
   "dependencies": {
     "@ltteng/eslint-config-basic": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint-define-config": "^1.24.1",
-    "typescript": "^5.2.2"
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "eslint-define-config": "^2.1.0",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "eslint": "^8.54.0"
+    "eslint": "^8.57.0"
   }
 }

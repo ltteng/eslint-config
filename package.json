@@ -1,16 +1,17 @@
 {
   "name": "@ltteng/eslint-config-monorepo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "description": "LiTENGTENG's ESLint config preset",
-  "author": "LiTENGTENG",
   "license": "MIT",
+  "author": "LiTENGTENG",
   "scripts": {
     "lint": "eslint . --fix",
     "release": "bumpp -r && pnpm publish -r"
   },
   "devDependencies": {
+    "@ltteng/eslint-config": "workspace:*",
     "bumpp": "^9.4.1",
-    "eslint": "^9.1.1"
+    "eslint": "^8.57.0"
   }
 }
