@@ -21,17 +21,7 @@ Forked from [antfu/eslint-config](https://github.com/antfu/eslint-config) and us
 
 ## Usage
 
-### Starter Wizard
-
-We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
-
-```bash
-pnpm dlx @ltteng/eslint-config@latest
-```
-
-### Manual Install
-
-If you prefer to set up manually:
+### Install
 
 ```bash
 pnpm i -D eslint @ltteng/eslint-config
