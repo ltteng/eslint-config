@@ -1,8 +1,10 @@
-# @antfu/eslint-config
+# @ltteng/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
-- Auto fix for formatting (aimed to be used standalone **without** Prettier)
+Forked from [antfu/eslint-config](https://github.com/antfu/eslint-config) and use Prettier for formatting.
+
+
+- Auto fix for formatting
 - Reasonable defaults, best practices, only one line of config
 - Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, etc. Out-of-box.
 - Opinionated, but [very customizable](#customization)
@@ -10,21 +12,12 @@
 - Optional [React](#react), [Next.js](#nextjs), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro), [Solid](#solid) support
 - Optional [formatters](#formatters) support for formatting CSS, HTML, XML, etc.
 - **Style principle**: Minimal for reading, stable for diff, consistent
-  - Sorted imports, dangling commas
+  - Sorted imports, no trailing commas
   - Single quotes, no semi
-  - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+  - Using [Prettier](https://github.com/prettier/prettier)
 - Respects `.gitignore` by default
 - Requires ESLint v9.5.0+
 
-> [!WARNING]
-> I am super appreciative and even a bit flattered that so many of you are fond of using this config. For that reason, I tried to make it as flexible and customizable as possible to fit more use cases.
->
-> However, please keep in mind that this is still **_a personal config_** with a lot of opinions. Changes might not always work for everyone and every use case.
->
-> If you are using this config directly, I suggest you **review the changes every time you update**. Or if you want more control over the rules, always feel free to fork it. Thanks!
-
-> [!TIP]
-> If you are interested in the tooling and the philosophy behind this config, I gave a talk about ESLint flat config at [JSNation 2024 - ESLint One for All Made Easy](https://gitnation.com/contents/eslint-one-for-all-made-easy), slides are [here](https://talks.antfu.me/2024/jsnation).
 
 ## Usage
 
@@ -33,7 +26,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-pnpm dlx @antfu/eslint-config@latest
+pnpm dlx @ltteng/eslint-config@latest
 ```
 
 ### Manual Install
@@ -41,16 +34,16 @@ pnpm dlx @antfu/eslint-config@latest
 If you prefer to set up manually:
 
 ```bash
-pnpm i -D eslint @antfu/eslint-config
+pnpm i -D eslint @ltteng/eslint-config
 ```
 
 And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu()
+export default ltt()
 ```
 
 <details>
@@ -62,12 +55,12 @@ If you still use some configs from the legacy eslintrc format, you can use the [
 
 ```js
 // eslint.config.mjs
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const compat = new FlatCompat()
 
-export default antfu(
+export default ltt(
   {
     ignores: [],
   },
@@ -251,24 +244,23 @@ lspconfig.eslint.setup({
 
 ## Customization
 
-Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
-Normally you only need to import the `antfu` preset:
+Normally you only need to import the `ltt` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu()
+export default ltt()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   // Type of the project. 'lib' for libraries, the default is 'app'
   type: 'lib',
 
@@ -303,15 +295,15 @@ export default antfu({
 })
 ```
 
-The `antfu` factory function also accepts any number of arbitrary custom config overrides:
+The `ltt` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu(
+export default ltt(
   {
-    // Configures for antfu's config
+    // Configures for ltt's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -353,7 +345,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@antfu/eslint-config'
+} from '@ltteng/eslint-config'
 
 export default combine(
   ignores(),
@@ -375,9 +367,7 @@ export default combine(
 
 </details>
 
-Check out the [configs](https://github.com/antfu/eslint-config/blob/main/src/configs) and [factory](https://github.com/antfu/eslint-config/blob/main/src/factory.ts) for more details.
-
-> Thanks to [sxzz/eslint-config](https://github.com/sxzz/eslint-config) for the inspiration and reference.
+Check out the [configs](https://github.com/ltteng/eslint-config/blob/main/src/configs) and [factory](https://github.com/ltteng/eslint-config/blob/main/src/factory.ts) for more details.
 
 ### Plugins Renaming
 
@@ -402,15 +392,6 @@ When you want to override rules, or disable them inline, you need to update to t
 type foo = { bar: 2 }
 ```
 
-> [!NOTE]
-> About plugin renaming - it is actually rather a dangerous move that might lead to potential naming collisions, pointed out [here](https://github.com/eslint/eslint/discussions/17766) and [here](https://github.com/prettier/eslint-config-prettier#eslintconfigjs-flat-config-plugin-caveat). As this config also very **personal** and **opinionated**, I ambitiously position this config as the only **"top-level"** config per project, that might pivots the taste of how rules are named.
->
-> This config cares more about the user-facings DX, and try to ease out the implementation details. For example, users could keep using the semantic `import/order` without ever knowing the underlying plugin has migrated twice to `eslint-plugin-i` and then to `eslint-plugin-import-x`. User are also not forced to migrate to the implicit `i/order` halfway only because we swapped the implementation to a fork.
->
-> That said, it's probably still not a good idea. You might not want to do this if you are maintaining your own eslint config.
->
-> Feel free to open issues if you want to combine this config with some other config presets but faced naming collisions. I am happy to figure out a way to make them work. But at this moment I have no plan to revert the renaming.
-
 Since v2.9.0, this preset will automatically rename the plugins also for your custom configs. You can use the original prefix to override the rules directly.
 
 <details>
@@ -419,9 +400,9 @@ Since v2.9.0, this preset will automatically rename the plugins also for your cu
 If you really want to use the original prefix, you can revert the plugin renaming by:
 
 ```ts
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu()
+export default ltt()
   .renamePlugins({
     ts: '@typescript-eslint',
     yaml: 'yml',
@@ -438,9 +419,9 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu(
+export default ltt(
   {
     vue: true,
     typescript: true
@@ -465,9 +446,9 @@ We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   vue: {
     overrides: {
       'vue/operator-linebreak': ['error', 'before'],
@@ -488,19 +469,19 @@ export default antfu({
 
 ### Config Composer
 
-Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
+Since v2.10.0, the factory function `ltt()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/ltt/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu()
+export default ltt()
   .prepend(
     // some configs before the main config
   )
   // overrides any named configs
   .override(
-    'antfu/stylistic/rules',
+    'ltt/stylistic/rules',
     {
       rules: {
         'style/generator-star-spacing': ['error', { after: true, before: false }],
@@ -521,9 +502,9 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   vue: true
 })
 ```
@@ -534,9 +515,9 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   vue: {
     vueVersion: 2
   },
@@ -551,9 +532,9 @@ To enable Vue accessibility support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   vue: {
     a11y: true
   },
@@ -572,13 +553,13 @@ We provide some optional configs for specific use cases, that we don't include t
 
 #### Formatters
 
-Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/antfu/eslint-plugin-format).
+Use external formatters to format files that ESLint cannot handle yet (`.css`, `.html`, etc). Powered by [`eslint-plugin-format`](https://github.com/ltt/eslint-plugin-format).
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   formatters: {
     /**
      * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
@@ -612,9 +593,9 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   react: true,
 })
 ```
@@ -631,9 +612,9 @@ To enable Next.js support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   nextjs: true,
 })
 ```
@@ -650,9 +631,9 @@ To enable svelte support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   svelte: true,
 })
 ```
@@ -669,9 +650,9 @@ To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   astro: true,
 })
 ```
@@ -688,9 +669,9 @@ To enable Solid support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   solid: true,
 })
 ```
@@ -707,9 +688,9 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   unocss: true,
 })
 ```
@@ -726,7 +707,7 @@ This config also provides some optional plugins/rules for extended usage.
 
 #### `command`
 
-Powered by [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command). It is not a typical rule for linting, but an on-demand micro-codemod tool that triggers by specific comments.
+Powered by [`eslint-plugin-command`](https://github.com/ltt/eslint-plugin-command). It is not a typical rule for linting, but an on-demand micro-codemod tool that triggers by specific comments.
 
 For a few triggers, for example:
 
@@ -735,7 +716,7 @@ For a few triggers, for example:
 - `/// to-for-each` - converts a for-in/for-of loop to `.forEach()`
 - `/// to-for-of` - converts a `.forEach()` to a for-of loop
 - `/// keep-sorted` - sorts an object/array/interface
-- ... etc. - refer to the [documentation](https://github.com/antfu/eslint-plugin-command#built-in-commands)
+- ... etc. - refer to the [documentation](https://github.com/ltt/eslint-plugin-command#built-in-commands)
 
 You can add the trigger comment one line above the code you want to transform, for example (note the triple slash):
 
@@ -764,9 +745,9 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },
@@ -780,19 +761,19 @@ Auto-fixing for the following rules are disabled when ESLint is running in a cod
 - [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 - [`test/no-only-tests`](https://github.com/levibuzolic/eslint-plugin-no-only-tests)
 - [`unused-imports/no-unused-imports`](https://www.npmjs.com/package/eslint-plugin-unused-imports)
-- [`pnpm/json-enforce-catalog`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
-- [`pnpm/json-prefer-workspace-settings`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
-- [`pnpm/json-valid-catalog`](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
+- [`pnpm/json-enforce-catalog`](https://github.com/ltt/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
+- [`pnpm/json-prefer-workspace-settings`](https://github.com/ltt/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
+- [`pnpm/json-valid-catalog`](https://github.com/ltt/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules)
 
-> Since v3.16.0, they are no longer disabled, but made non-fixable using [this helper](https://github.com/antfu/eslint-flat-config-utils#composerdisablerulesfix).
+> Since v3.16.0, they are no longer disabled, but made non-fixable using [this helper](https://github.com/ltt/eslint-flat-config-utils#composerdisablerulesfix).
 
 This is to prevent unused imports from getting removed by the editor during refactoring to get a better developer experience. Those rules will be applied when you run ESLint in the terminal or [Lint Staged](#lint-staged). If you don't want this behavior, you can disable them:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import ltt from '@ltteng/eslint-config'
 
-export default antfu({
+export default ltt({
   isInEditor: false
 })
 ```
@@ -823,7 +804,6 @@ npx simple-git-hooks
 
 ## View what rules are enabled
 
-I built a visual tool to help you view what rules are enabled in your project and apply them to what files, [@eslint/config-inspector](https://github.com/eslint/config-inspector)
 
 Go to your project root that contains `eslint.config.js` and run:
 
@@ -831,80 +811,6 @@ Go to your project root that contains `eslint.config.js` and run:
 npx @eslint/config-inspector
 ```
 
-## Versioning Policy
-
-This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involves opinions and many moving parts, we don't treat rules changes as breaking changes.
-
-### Changes Considered as Breaking Changes
-
-- Node.js version requirement changes
-- Huge refactors that might break the config
-- Plugins made major changes that might break the config
-- Changes that might affect most of the codebases
-
-### Changes Considered as Non-breaking Changes
-
-- Enable/disable rules and plugins (that might become stricter)
-- Rules options changes
-- Version bumps of dependencies
-
-## Badge
-
-If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
-
-```md
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
-```
-
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
-
-## FAQ
-
-### Prettier?
-
-[Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
-
-Well, you can still use Prettier to format files that are not supported well by ESLint yet, such as `.css`, `.html`, etc. See [formatters](#formatters) for more details.
-
-### oxlint?
-
-We do have a plan to integrate [oxlint](https://github.com/oxc-project/oxc) in someway to speed up the linting process. However there are still some blocks we are waiting for. Track the progress [in this issue: **Oxlint Integration Plan**](https://github.com/antfu/eslint-config/issues/767).
-
-### dprint?
-
-[dprint](https://dprint.dev/) is also a great formatter that with more abilities to customize. However, it's in the same model as Prettier which reads the AST and reprints the code from scratch. This means it's similar to Prettier, which ignores the original line breaks and might also cause the inconsistent diff. So in general, we prefer to use ESLint to format and lint JavaScript/TypeScript code.
-
-Meanwhile, we do have dprint integrations for formatting other files such as `.md`. See [formatters](#formatters) for more details.
-
-### How to format CSS?
-
-You can opt-in to the [`formatters`](#formatters) feature to format your CSS. Note that it's only doing formatting, but not linting. If you want proper linting support, give [`stylelint`](https://stylelint.io/) a try.
-
-### Top-level Function Style, etc.
-
-I am a very opinionated person, so as this config. I prefer the top-level functions always using the function declaration over arrow functions; I prefer one-line if statements without braces and always wraps, and so on. I even wrote some custom rules to enforce them.
-
-I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
-
-```ts
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  lessOpinionated: true
-})
-```
-
-### I prefer XXX...
-
-Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
-
-## Check Also
-
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/starter-ts](https://github.com/antfu/starter-ts) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
-
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License &copy; 2025-PRESENT [LiTENGTENG](https://github.com/ltteng)
