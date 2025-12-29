@@ -49,7 +49,7 @@ runWithConfig(
   },
 )
 
-// https://github.com/antfu/eslint-config/issues/255
+// https://github.com/ltteng/eslint-config/issues/255
 runWithConfig(
   'ts-override',
   {
@@ -62,7 +62,7 @@ runWithConfig(
   },
 )
 
-// https://github.com/antfu/eslint-config/issues/255
+// https://github.com/ltteng/eslint-config/issues/255
 runWithConfig(
   'ts-strict',
   {
@@ -77,7 +77,7 @@ runWithConfig(
   },
 )
 
-// https://github.com/antfu/eslint-config/issues/618
+// https://github.com/ltteng/eslint-config/issues/618
 runWithConfig(
   'ts-strict-with-react',
   {
@@ -129,7 +129,7 @@ function runWithConfig(name: string, configs: OptionsConfig, ...items: TypedFlat
     })
     await fs.writeFile(join(target, 'eslint.config.js'), `
 // @eslint-disable
-import antfu from '@antfu/eslint-config'
+import antfu from '@ltteng/eslint-config'
 
 export default antfu(
   ${JSON.stringify(configs)},
